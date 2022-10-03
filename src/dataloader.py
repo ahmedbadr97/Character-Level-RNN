@@ -52,11 +52,15 @@ class CharsDataset(IterableDataset):
                 seq_data.append(self.one_hot_encode(self.data[chars_idx]))
                 seq_labels.append(self.labels[chars_idx])
                 chars_idx += 1
-            yield torch.tensor(np.array(seq_data)), torch.tensor(np.array(seq_labels))
+            yield torch.tensor(np.array(seq_data), dtype=torch.float32), torch.tensor(np.array(seq_labels),
+                                                                                      dtype=torch.float32)
             seq_idx += 1
 
     def __len__(self):
         return self.no_sequences
+
+    def __str__(self):
+        return f"sequence_length:{self.seq_length} , no_sequences {self.no_sequences} , no_chars {len(self.chars_to_int)}"
 
 
 def data_loader_test(characters: str, batch_size=2, seq_length=3):
@@ -65,7 +69,7 @@ def data_loader_test(characters: str, batch_size=2, seq_length=3):
 
     print(f"test text no of characters={no_chars}")
     print(testText)
-    characters=list(set(characters))
+    characters = list(set(characters))
     dataset_test_obj = CharsDataset(characters, testText, seq_length=seq_length)
     data_loader = DataLoader(dataset_test_obj, batch_size=batch_size)
 
@@ -75,7 +79,6 @@ def data_loader_test(characters: str, batch_size=2, seq_length=3):
 
     assert dataset_test_obj.data.size == dataset_test_obj.no_sequences * seq_length
     assert dataset_test_obj.labels.size == dataset_test_obj.no_sequences * seq_length
-
 
     print(
         f"no of batches={len(data_loader)}  , batch_size {batch_size} , seq_length={seq_length} , no of chars={len(data_loader) * batch_size * seq_length}")
