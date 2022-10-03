@@ -37,7 +37,7 @@ class EpochStatus:
 
         avg_step_time = self.time_sum / self.forward_cnt
         time_remaining = avg_step_time * (len(self.data_loader) - self.forward_cnt)
-        avg_loss = round(self.loss_sum / self.forward_cnt, 8)
+        avg_loss = round(self.loss_sum / (self.forward_cnt*self.data_loader.batch_size), 8)
         return avg_loss, self.sec2min(time_remaining)
 
     def get_loading_bar(self) -> str:
@@ -47,7 +47,7 @@ class EpochStatus:
 
     def epoch_summary(self):
         total_time = time() - self.start_time
-        avg_loss = round(self.loss_sum / self.forward_cnt, 8)
+        avg_loss = round(self.loss_sum / (self.forward_cnt*self.data_loader.batch_size), 8)
         return avg_loss, total_time
 
     @staticmethod
@@ -132,7 +132,7 @@ def train(model: CharsRnn, train_loader, test_loader, epochs, lr, cuda=False, **
             avg_loss, time_remaining = train_status.step(loss)
             sys.stdout.flush()
             sys.stdout.write("\r epoch " + str(e + 1) + train_status.get_loading_bar() + "time remaining (m) = " + str(
-                time_remaining) + " Avg Train_Loss=" + str(time_remaining))
+                time_remaining) + " Avg Train_Loss=" + str(avg_loss))
 
         avg_train_loss, train_time = train_status.epoch_summary()
 
