@@ -1,4 +1,4 @@
-from torch import Module
+from torch.nn import Module
 import torch.nn as nn
 
 
@@ -18,13 +18,11 @@ class CharsRnn(Module):
 
     def forward(self, x, hidden):
         out, hidden = self.lstm(x, hidden)
-        out=out.view(-1,self.hidden_layers)
+        out = out.view(-1, self.hidden_layers)
 
-        out=self.dropout(out)
-        out=self.fc(out)
-        return out,hidden
-
-
+        out = self.dropout(out)
+        out = self.fc(out)
+        return out, hidden
 
     def init_hidden(self, batch_size):
         ''' Initializes hidden state '''

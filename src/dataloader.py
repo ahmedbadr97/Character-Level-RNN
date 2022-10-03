@@ -50,7 +50,7 @@ class CharsDataset(IterableDataset):
             seq_data, seq_labels = [], []
             for i in range(self.seq_length):
                 seq_data.append(self.one_hot_encode(self.data[chars_idx]))
-                seq_labels.append(self.one_hot_encode(self.labels[chars_idx]))
+                seq_labels.append(self.labels[chars_idx])
                 chars_idx += 1
             yield torch.tensor(np.array(seq_data)), torch.tensor(np.array(seq_labels))
             seq_idx += 1
@@ -89,7 +89,7 @@ def data_loader_test(characters: str, batch_size=2, seq_length=3):
                 char = dataset_test_obj.int_to_chars[char_idx]
                 convertedTextData += char
 
-                char = dataset_test_obj.int_to_chars[torch.argmax(labels[i][j]).item()]
+                char = dataset_test_obj.int_to_chars[labels[i][j].item()]
                 convertedTextLabels += char
 
     print(f"Test Text {testText}")
