@@ -15,6 +15,8 @@ class CharsRnn(Module):
         self.dropout = nn.Dropout(0.5)
         self.fc = nn.Linear(hidden_nodes, no_chars)
         self.train_on_gpu = train_on_gpu
+        if train_on_gpu:
+            self.cuda()
 
 
     def forward(self, x, hidden):

@@ -110,6 +110,7 @@ def train(model: CharsRnn, train_loader, test_loader, epochs, lr, cuda=False, **
         train_status = EpochStatus(train_loader)
 
         hidden = model.init_hidden(train_loader.batch_size)
+        model.train()
         for data, labels in train_loader:
             hidden = tuple([each.data for each in hidden])
             optimizer.zero_grad()
