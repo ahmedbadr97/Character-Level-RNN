@@ -101,3 +101,5 @@ def data_loader_test(characters: str, batch_size=2, seq_length=3):
     valid_int_size = dataset_test_obj.no_sequences * seq_length
     assert convertedTextData == testText[:valid_int_size]
     assert convertedTextLabels == testText[1:valid_int_size + 1]
+
+
