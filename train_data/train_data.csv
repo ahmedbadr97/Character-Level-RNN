@@ -3,7 +3,7 @@ epoch idx from,model architecture,train batch size,loss function,optimizer,chang
   (lstm): LSTM(83, 256, num_layers=2, batch_first=True, dropout=0.5)
   (dropout): Dropout(p=0.5, inplace=False)
   (fc): Linear(in_features=256, out_features=83, bias=True)
-)",64,CrossEntropyLoss(),"Adam (
+)",128,CrossEntropyLoss(),"Adam (
 Parameter Group 0
     amsgrad: False
     betas: (0.9, 0.999)
@@ -11,104 +11,14 @@ Parameter Group 0
     eps: 1e-08
     foreach: None
     lr: 0.01
-    maximize: False
-    weight_decay: 0
-)",[],50
-3,"CharsRnn(
-  (lstm): LSTM(83, 256, num_layers=2, batch_first=True, dropout=0.5)
-  (dropout): Dropout(p=0.5, inplace=False)
-  (fc): Linear(in_features=256, out_features=83, bias=True)
-)",64,CrossEntropyLoss(),"Adam (
-Parameter Group 0
-    amsgrad: False
-    betas: (0.9, 0.999)
-    capturable: False
-    eps: 1e-08
-    foreach: None
-    lr: 0.001
-    maximize: False
-    weight_decay: 0
-)",['optimizer'],50
-5,"CharsRnn(
-  (lstm): LSTM(83, 256, num_layers=2, batch_first=True, dropout=0.5)
-  (dropout): Dropout(p=0.5, inplace=False)
-  (fc): Linear(in_features=256, out_features=83, bias=True)
-)",64,CrossEntropyLoss(),"Adam (
-Parameter Group 0
-    amsgrad: False
-    betas: (0.9, 0.999)
-    capturable: False
-    eps: 1e-08
-    foreach: None
-    lr: 0.01
-    maximize: False
-    weight_decay: 0
-)",['optimizer'],50
-8,"CharsRnn(
-  (lstm): LSTM(83, 128, num_layers=2, batch_first=True, dropout=0.5)
-  (dropout): Dropout(p=0.5, inplace=False)
-  (fc): Linear(in_features=128, out_features=83, bias=True)
-)",64,CrossEntropyLoss(),"Adam (
-Parameter Group 0
-    amsgrad: False
-    betas: (0.9, 0.999)
-    capturable: False
-    eps: 1e-08
-    foreach: None
-    lr: 0.01
-    maximize: False
-    weight_decay: 0
-)",['model architecture'],50
-28,"CharsRnn(
-  (lstm): LSTM(83, 128, num_layers=2, batch_first=True, dropout=0.5)
-  (dropout): Dropout(p=0.5, inplace=False)
-  (fc): Linear(in_features=128, out_features=83, bias=True)
-)",64,CrossEntropyLoss(),"Adam (
-Parameter Group 0
-    amsgrad: False
-    betas: (0.9, 0.999)
-    capturable: False
-    eps: 1e-08
-    foreach: None
-    lr: 0.001
-    maximize: False
-    weight_decay: 0
-)",['optimizer'],50
-48,"CharsRnn(
-  (lstm): LSTM(83, 128, num_layers=2, batch_first=True, dropout=0.5)
-  (dropout): Dropout(p=0.5, inplace=False)
-  (fc): Linear(in_features=128, out_features=83, bias=True)
-)",64,CrossEntropyLoss(),"Adam (
-Parameter Group 0
-    amsgrad: False
-    betas: (0.9, 0.999)
-    capturable: False
-    eps: 1e-08
-    foreach: None
-    lr: 0.001
-    maximize: False
-    weight_decay: 0
-)",['sequence length'],100
-56,"CharsRnn(
-  (lstm): LSTM(83, 256, num_layers=2, batch_first=True, dropout=0.5)
-  (dropout): Dropout(p=0.5, inplace=False)
-  (fc): Linear(in_features=256, out_features=83, bias=True)
-)",64,CrossEntropyLoss(),"Adam (
-Parameter Group 0
-    amsgrad: False
-    betas: (0.9, 0.999)
-    capturable: False
-    eps: 1e-08
-    foreach: None
-    lr: 0.001
     maximize: False
     weight_decay: 0
 )",['model architecture'],100
-59,"CharsRnn(
-  (lstm): LSTM(83, 256, num_layers=2, batch_first=True, dropout=0.5)
+3,"CharsRnn(
+  (lstm): LSTM(83, 512, num_layers=2, batch_first=True, dropout=0.5)
   (dropout): Dropout(p=0.5, inplace=False)
-  (fc): Linear(in_features=256, out_features=83, bias=True)
-)",64,CrossEntropyLoss(),"Adam (
+  (fc): Linear(in_features=512, out_features=83, bias=True)
+)",128,CrossEntropyLoss(),"Adam (
 Parameter Group 0
     amsgrad: False
     betas: (0.9, 0.999)
@@ -118,17 +28,19 @@ Parameter Group 0
     lr: 0.01
     maximize: False
     weight_decay: 0
-)",['optimizer'],100
-79,"CharsRnn(
-  (lstm): LSTM(83, 256, num_layers=2, batch_first=True, dropout=0.5)
+)",['model architecture'],100
+14,"CharsRnn(
+  (lstm): LSTM(83, 512, num_layers=2, batch_first=True, dropout=0.5)
   (dropout): Dropout(p=0.5, inplace=False)
-  (fc): Linear(in_features=256, out_features=83, bias=True)
-)",64,CrossEntropyLoss(),"Adam (
+  (fc): Linear(in_features=512, out_features=83, bias=True)
+)",128,CrossEntropyLoss(),"Adam (
 Parameter Group 0
     amsgrad: False
     betas: (0.9, 0.999)
+    capturable: False
     eps: 1e-08
+    foreach: None
     lr: 0.001
     maximize: False
     weight_decay: 0
-)","['optimizer', 'sequence length']",50
+)",['optimizer'],100

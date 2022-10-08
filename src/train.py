@@ -60,7 +60,6 @@ def train(model: CharsRnn, train_loader, test_loader, epochs, lr, train_data_sav
 
         hidden = model.init_hidden(train_loader.batch_size)
         model.train()
-        avg_loss = 0.0
         train_tracker.train()
 
         for data, labels in train_loader:

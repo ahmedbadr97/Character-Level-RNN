@@ -53,13 +53,13 @@ class CharsRnn(Module):
                 _, hidden = self._next_char(c, hidden)
                 predicted_txt.append(c)
             # the one after the last char in given context
-            next_char = predicted_txt[-1]
+            predicted_txt.append(_)
             # predict next chars
             for i in range(no_chars):
-                next_char, hidden = self._next_char(next_char, hidden)
-                context += next_char
+                char, hidden = self._next_char(predicted_txt[-1], hidden)
+                predicted_txt.append(char)
 
-        return context
+        return "".join(predicted_txt)
 
     def _next_char(self, current_char, hidden):
         char_encoding = self.one_hot_encode(current_char)
@@ -73,10 +73,17 @@ class CharsRnn(Module):
 
         out = F.softmax(out, dim=1).data
         # size (1,no_chars) batch size=1 seq_len=1
-        top_char = torch.argmax(out, dim=1).item()
-        top_char = self.int_to_chars[top_char]
+        # top_char = torch.argmax(out, dim=1).item()
+        # top_char = self.int_to_chars[top_char]
+        p, top_ch_idx = out.topk(5)
+        top_ch_idx = top_ch_idx.numpy().squeeze()
 
-        return top_char, hidden
+        # select the likely next character with some element of randomness
+
+        p = p.numpy().squeeze()
+        char = np.random.choice(top_ch_idx, p=p / p.sum())
+
+        return self.int_to_chars[char], hidden
 
     def init_hidden(self, batch_size):
         ''' Initializes hidden state '''
